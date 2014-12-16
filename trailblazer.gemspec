@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "uber", ">= 0.0.10" # no builder inheritance.
   spec.add_dependency "representable", ">= 2.1.1", "<2.2.0" # Representable::apply.
   spec.add_dependency "reform", "~> 1.2.0"
+  spec.add_dependency "railties", ">= 4.1.6"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
