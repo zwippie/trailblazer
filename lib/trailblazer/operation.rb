@@ -46,7 +46,6 @@ module Trailblazer
         contract_class.class_eval(&block)
       end
 
-
     private
       def build_operation_class(*params)
         class_builder.call(*params) # Uber::Builder::class_builder
@@ -54,7 +53,6 @@ module Trailblazer
     end
 
     include Uber::Builder
-
 
     def initialize(options={})
       @valid            = true
@@ -78,18 +76,31 @@ module Trailblazer
 
     attr_reader :contract
 
+    def errors
+      contract.errors
+    end
+
     def valid?
       @valid
     end
 
   private
-
     def setup!(*params)
+      setup_params!(*params)
+
       @model = model!(*params)
+      setup_model!(*params)
     end
 
     # Implement #model! to find/create your operation model (if required).
     def model!(*params)
+    end
+
+    # Override to add attributes that can be infered from params.
+    def setup_model!(*params)
+    end
+
+    def setup_params!(*params)
     end
 
     def validate(params, model, contract_class=nil) # NOT to be overridden?!! it creates Result for us.
