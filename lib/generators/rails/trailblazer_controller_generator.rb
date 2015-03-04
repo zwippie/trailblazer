@@ -1,5 +1,4 @@
 require 'rails/generators'
-# require 'rails/generators/resource_helpers'
 require 'rails/generators/rails/scaffold_controller/scaffold_controller_generator'
 
 module Rails
@@ -17,8 +16,10 @@ module Rails
       end
 
       def add_crud_dependency_to_model
-        append_to_file File.join('app/models', "#{singular_table_name}.rb") do
-          "\nrequire_dependency \"#{singular_table_name}/crud\""
+        if File.exists? File.join('app/models', "#{singular_table_name}.rb")
+          append_to_file File.join('app/models', "#{singular_table_name}.rb") do
+            "\nrequire_dependency \"#{singular_table_name}/crud\""
+          end
         end
       end
     

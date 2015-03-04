@@ -18,5 +18,9 @@ module Trailblazer
         Trailblazer::Railtie.autoload_crud_operations(app)
       end
     end
+
+    generators do
+      require 'trailblazer/generators/rails/trailblazer_controller_generator'
+    end
   end
 end
